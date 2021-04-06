@@ -62,7 +62,7 @@ const useStyles = makeStyles(theme => createStyles({
 }));
 
 function App() {
-  const [avatars, setAvatars] = useState([]);
+  const [multer, setMulter] = useState([]);
   const [isDragOver, setDragOver] = useState(false);
   const classes = useStyles();
 
@@ -87,7 +87,7 @@ function App() {
       // console.log(result);
       const dataURL = encodeImage(result.data.mimetype, result.data.buffer.data);
       // console.log(dataURL);
-      setAvatars([...avatars, {name: result.data.name, url: dataURL}]);
+      setMulter([...multer, {name: result.data.name, url: dataURL}]);
     }
 
     uploadImage();
@@ -111,7 +111,7 @@ function App() {
   };
 
   const onClick = e =>{
-      setAvatars([])
+      setMulter([])
   }
 
   return (
@@ -131,7 +131,7 @@ function App() {
       <section id="image-grid" className={`${classes.container}`}>
           <h3>Uploads</h3>
           <div className={`${classes.containerGrid}`}>
-            {avatars.map((avatar, idx) => <img key={`${avatar.name}-${idx}`} src={avatar.url} /> )}
+            {multer.map((avatar, idx) => <img key={`${avatar.name}-${idx}`} src={avatar.url} /> )}
             <br/>
             
           </div>  
