@@ -5,7 +5,7 @@ const upload = require('./middleware'),
 const Multer = require('../models/multer');
 
 router.post('/upload', upload.single('file'), async (req, res) => {
-    console.log(`POST request upload avatar ${req.file.originalname}`);
+    console.log(`POST request upload multer ${req.file.originalname}`);
     console.log(req.file)
 
     const newMulter = req.file;
