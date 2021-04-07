@@ -70,7 +70,9 @@ function App() {
 
     const encodeImage = (mimetype, arrayBuffer) => {
         let u8 = new Uint8Array(arrayBuffer)
+        
         const b64encoded = btoa([].reduce.call(new Uint8Array(arrayBuffer),function(p,c){return p+String.fromCharCode(c)},''))
+        console.log(arrayBuffer)
         return "data:"+mimetype+";base64,"+b64encoded;
     }
 
@@ -79,15 +81,19 @@ function App() {
       data.append('file', file);
       data.append('filename', file.name);
 
-      // POST request
+      
       const result = await axios.post('http://localhost:3000/upload', data, { 
                                         headers: { 'Content-Type': 'multipart/form-data'}
       });
 
-      // console.log(result);
-      const dataURL = encodeImage(result.data.mimetype, result.data.buffer.data);
-      // console.log(dataURL);
-      setMulter([...multer, {name: result.data.name, url: dataURL}]);
+      console.log("ye result hai",result);
+      const dataURL = encodeImage(result.data.mimetype, result.data.buffer  );
+      console.log(encodeImage)
+      
+      // const a = encodeImage(result.data.arrayBuffer)
+      // console.log(result.data.arrayBuffer)
+      // console.log("ye data hai",dataURL);
+      setMulter([...multer, {name: result.data.name, url:dataURL }]);
     }
 
     uploadImage();
