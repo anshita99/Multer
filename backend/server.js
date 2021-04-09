@@ -11,7 +11,6 @@ app.use(express.json())
    
 
 
-
 // const MONGODB_URI ='mongodb+srv://poc:poc@cluster0.o2jmn.mongodb.net/multer?retryWrites=true&w=majority';
 
 mongoose.connect("mongodb+srv://poc:poc@cluster0.o2jmn.mongodb.net/multer?retryWrites=true&w=majority", {
@@ -28,7 +27,8 @@ mongoose.connect("mongodb+srv://poc:poc@cluster0.o2jmn.mongodb.net/multer?retryW
 const  MulterRouter = require('./routes/multer');
 
 app.use("/", MulterRouter);
+app.use("/files",express.static('uploads'))
 
 
 
-app.listen(3000, () => console.log('Server listening on port 3001!'));
+app.listen(3000, () => console.log('Server listening on port 3000!'));

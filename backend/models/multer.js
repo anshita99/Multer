@@ -5,8 +5,11 @@ const multerschema = new mongoose.Schema({
     originalname: String,
     encoding: String,
     mimetype: String,
-    buffer: Buffer,
+    destination:String,
+    path:String,
+    filename:String,
     size: Number
 });
 
-module.exports = mongoose.model("multer", multerschema);
+ const Multers= mongoose.model("multer", multerschema);
+ module.exports=Multers
