@@ -49,15 +49,6 @@ export default class UploadImages extends Component {
 
         const parent = this.state.message;
         parent.push(response.data.name.filename);
-        // parent.sort((a, b) => {
-        //   if (a.response.data.name.filename < b.response.data.name.filename) {
-        //     return -1;
-        //   }
-        //   if (a.response.data.name.filename > b.response.data.name.filename) {
-        //     return 1;
-        //   }
-        //   return 0;
-        // });
         this.setState({
           
           message: parent,
@@ -113,7 +104,8 @@ export default class UploadImages extends Component {
     } = this.state;
 
     return (
-      <div>
+      <div >
+      <center>
         <div className="row">
           <div className="col-8">
             <label className="btn btn-default p-0">
@@ -177,12 +169,13 @@ export default class UploadImages extends Component {
         {message && message.map((i,id) =>(
           <div
             className="alert alert-secondary mt-3"
-            onClick={()=>this.showImage(message)}
+            onClick={()=>this.showImage(i)}
             role="alert"
           >
             {i}
           </div>
         ))}
+        </center>
       </div>
     );
   }
